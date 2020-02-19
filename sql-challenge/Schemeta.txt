@@ -1,0 +1,100 @@
+-- Create department table and view column datatypes
+CREATE TABLE Departments(
+	Dept_No VARCHAR,
+	Dept_Name VARCHAR,
+	PRIMARY KEY (Dept_No)
+);
+---- Import the departments.csv file
+----Code Importing CSV Files
+COPY departments(Dept_No,Dept_Name)
+FROM '/Users/Victorime/desktop/Shared/departments.csv' DELIMITER ',' CSV HEADER;
+
+
+SELECT * FROM Departments;
+drop table departments
+
+-- Create departmentemployees table and view column datatypes
+CREATE TABLE dept_emp(
+	Emp_No INT,
+	Dept_No VARCHAR,
+	From_Date DATE,
+	To_Date DATE,
+	FOREIGN KEY (Dept_No) REFERENCES Departments(Dept_No)
+);
+
+
+----Code Importing CSV Files
+COPY dept_emp(Emp_No,Dept_No,from_data,to_date)
+FROM '/Users/Victorime/desktop/Shared/dept_emp.csv' DELIMITER ',' CSV HEADER;
+
+SELECT * FROM dept_emp;
+drop table dept_emp;
+
+-- Create employees table and view column datatypes
+CREATE TABLE Employees(
+	emp_no INT,
+	birth_Date DATE NOT NULL,
+	first_Name VARCHAR(30) NOT NULL,
+	last_Name VARCHAR (30) NOT NULL,
+	gender VARCHAR,
+	hire_Date DATE NOT NULL,
+	PRIMARY KEY (emp_no)
+);
+
+
+----Code Importing CSV Files
+COPY employees(Emp_No,birth_date,first_name,last_name,gender,hire_date)
+FROM '/Users/Victorime/desktop/Shared/employees.csv' DELIMITER ',' CSV HEADER;
+
+SELECT * FROM Employees;
+drop table employees
+
+
+
+-- Create departmentmanagers table and view column datatypes
+CREATE TABLE dept_managers(
+	Dept_No VARCHAR,
+	Emp_No INT,
+	From_Date DATE,
+	To_Date DATE,
+	FOREIGN KEY (Dept_No) REFERENCES Departments(Dept_No),
+	FOREIGN KEY (emp_No) REFERENCES Employees(Emp_No)
+);
+
+
+SELECT * FROM dept_managers;
+drop table dept_managers;
+
+COPY dept_managers(dept_no,emp_no,from_date,to_date)
+FROM '/Users/Victorime/desktop/Shared/dept_managers.csv' DELIMITER ',' CSV HEADER;
+
+-- Create salary table and view column datatypes
+CREATE TABLE Salaries(
+	Emp_No INT,
+	Salary MONEY,
+	From_Date DATE,
+	To_Date DATE,
+	FOREIGN KEY (Emp_No) REFERENCES Employees(Emp_No)
+);
+
+
+SELECT * FROM Salaries;
+DROP TABLE salaries
+
+COPY salaries(emp_no,salary,from_date,to_date)
+FROM '/Users/Victorime/desktop/Shared/salaries.csv' DELIMITER ',' CSV HEADER;
+
+-- Create salary table and view column datatypes
+CREATE TABLE Titles(
+	Emp_No INT,
+	Title VARCHAR,
+	From_Date DATE,
+	To_Date DATE,
+	FOREIGN KEY (Emp_No) REFERENCES Employees(Emp_No)
+);
+
+SELECT * FROM Titles;
+drop table titles
+
+COPY titles(emp_no,title,from_date,to_date)
+FROM '/Users/Victorime/desktop/Shared/titles.csv' DELIMITER ',' CSV HEADER;
