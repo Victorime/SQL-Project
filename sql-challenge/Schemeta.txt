@@ -40,4 +40,12 @@ CREATE TABLE Employees(
 	PRIMARY KEY (emp_no)
 );
 
+----Code Importing CSV Files
+COPY employees(Emp_No,birth_date,first_name,last_name,gender,hire_date)
+FROM '/Users/Victorime/desktop/Shared/employees.csv' DELIMITER ',' CSV HEADER;
+
+SELECT * FROM Employees;
+drop table employees
+
+
 
