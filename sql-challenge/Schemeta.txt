@@ -4,3 +4,10 @@ CREATE TABLE Departments(
 	Dept_Name VARCHAR,
 	PRIMARY KEY (Dept_No)
 );
+
+---- Import the departments.csv file
+----Code Importing CSV Files
+COPY departments(Dept_No,Dept_Name)
+FROM '/Users/Victorime/desktop/Shared/departments.csv' DELIMITER ',' CSV HEADER;
+
+
