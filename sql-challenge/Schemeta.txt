@@ -22,3 +22,22 @@ CREATE TABLE dept_emp(
 	FOREIGN KEY (Dept_No) REFERENCES Departments(Dept_No)
 );
 
+----Code Importing CSV Files
+COPY dept_emp(Emp_No,Dept_No,from_data,to_date)
+FROM '/Users/Victorime/desktop/Shared/dept_emp.csv' DELIMITER ',' CSV HEADER;
+
+SELECT * FROM dept_emp;
+drop table dept_emp;
+
+-- Create employees table and view column datatypes
+CREATE TABLE Employees(
+	emp_no INT,
+	birth_Date DATE NOT NULL,
+	first_Name VARCHAR(30) NOT NULL,
+	last_Name VARCHAR (30) NOT NULL,
+	gender VARCHAR,
+	hire_Date DATE NOT NULL,
+	PRIMARY KEY (emp_no)
+);
+
+
