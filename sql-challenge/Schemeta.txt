@@ -87,4 +87,8 @@ CREATE TABLE Titles(
 	FOREIGN KEY (Emp_No) REFERENCES Employees(Emp_No)
 );
 
+SELECT * FROM Titles;
+drop table titles
 
+COPY titles(emp_no,title,from_date,to_date)
+FROM '/Users/Victorime/desktop/Shared/titles.csv' DELIMITER ',' CSV HEADER;
