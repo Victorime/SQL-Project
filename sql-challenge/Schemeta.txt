@@ -10,4 +10,15 @@ CREATE TABLE Departments(
 COPY departments(Dept_No,Dept_Name)
 FROM '/Users/Victorime/desktop/Shared/departments.csv' DELIMITER ',' CSV HEADER;
 
+SELECT * FROM Departments;
+drop table departments
+
+-- Create departmentemployees table and view column datatypes
+CREATE TABLE dept_emp(
+	Emp_No INT,
+	Dept_No VARCHAR,
+	From_Date DATE,
+	To_Date DATE,
+	FOREIGN KEY (Dept_No) REFERENCES Departments(Dept_No)
+);
 
