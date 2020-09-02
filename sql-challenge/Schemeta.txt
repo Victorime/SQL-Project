@@ -72,5 +72,19 @@ CREATE TABLE Salaries(
 	FOREIGN KEY (Emp_No) REFERENCES Employees(Emp_No)
 );
 
+SELECT * FROM Salaries;
+DROP TABLE salaries
+
+COPY salaries(emp_no,salary,from_date,to_date)
+FROM '/Users/Victorime/desktop/Shared/salaries.csv' DELIMITER ',' CSV HEADER;
+
+-- Create salary table and view column datatypes
+CREATE TABLE Titles(
+	Emp_No INT,
+	Title VARCHAR,
+	From_Date DATE,
+	To_Date DATE,
+	FOREIGN KEY (Emp_No) REFERENCES Employees(Emp_No)
+);
 
 
