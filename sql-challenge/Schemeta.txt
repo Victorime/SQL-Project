@@ -47,5 +47,30 @@ FROM '/Users/Victorime/desktop/Shared/employees.csv' DELIMITER ',' CSV HEADER;
 SELECT * FROM Employees;
 drop table employees
 
+-- Create departmentmanagers table and view column datatypes
+CREATE TABLE dept_managers(
+	Dept_No VARCHAR,
+	Emp_No INT,
+	From_Date DATE,
+	To_Date DATE,
+	FOREIGN KEY (Dept_No) REFERENCES Departments(Dept_No),
+	FOREIGN KEY (emp_No) REFERENCES Employees(Emp_No)
+);
+
+SELECT * FROM dept_managers;
+drop table dept_managers;
+
+COPY dept_managers(dept_no,emp_no,from_date,to_date)
+FROM '/Users/Victorime/desktop/Shared/dept_managers.csv' DELIMITER ',' CSV HEADER;
+
+-- Create salary table and view column datatypes
+CREATE TABLE Salaries(
+	Emp_No INT,
+	Salary MONEY,
+	From_Date DATE,
+	To_Date DATE,
+	FOREIGN KEY (Emp_No) REFERENCES Employees(Emp_No)
+);
+
 
 
