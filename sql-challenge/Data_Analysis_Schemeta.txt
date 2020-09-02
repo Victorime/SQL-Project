@@ -8,6 +8,7 @@ SELECT last_name,first_name,hire_date
 FROM employees
 WHERE hire_date BETWEEN '1986/1/1' AND '1986/12/31';
 
+
 --List the manager of each department with the following information: 
 --department number, department name, the manager's employee number, last name, first name, 
 --and start and end employment dates
@@ -18,6 +19,23 @@ JOIN departments
 JOIN employees
 	ON dept_manager.emp_no = employees.emp_no;
 
+
+
+	
+-----*List the department of each employee with the following information: 
+--employee number, last name, first name, and department name.
+SELECT dept_emp.emp_no,employees.last_name,employees.first_name,departments.dept_name
+FROM dept_emp
+JOIN departments
+	ON dept_emp.dept_no = departments.dept_no
+JOIN employees
+	ON dept_emp.emp_no = employees.emp_no
+WHERE to_date IN
+(
+	SELECT to_date
+	FROM dept_emp
+	WHERE to_date ='1/1/9999'
+);
 
 
 
